@@ -1,2 +1,2 @@
 # EcommerceDemo
-Created with .NET and Angular
+Created with .NET (will update with Angular frontend later)
