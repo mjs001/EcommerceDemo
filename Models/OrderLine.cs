@@ -1,10 +1,13 @@
-﻿namespace ecommerceWithAngular.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ecommerceWithAngular.Models
 {
     public class OrderLine
     {
         public int Id { get; set; }
         public int Quantity { get; set; }
         public decimal? UnitPrice { get; set; }
+        [Range(1,100,ErrorMessage = "Price must be between {0} and {1}")]
         public decimal? Price { get; set; }
         public int OrderId { get; set; }
         public int? ProductId { get; set; }

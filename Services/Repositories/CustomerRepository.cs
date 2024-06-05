@@ -4,7 +4,7 @@ using ecommerceWithAngular.Services.Infrastructure;
 
 namespace ecommerceWithAngular.Services.Repositories
 {
-    public class CustomerRepository : ICustomer
+   /* public class CustomerRepository : ICustomer
     {
         private ApplicationDbContext _context;
         public CustomerRepository(ApplicationDbContext context)
@@ -16,13 +16,18 @@ namespace ecommerceWithAngular.Services.Repositories
             return _context.Customers.Count();
         }
 
-        public void Delete(int id)
+        public void Delete(int id, Customer c)
         {
             var customer = _context.Customers.FirstOrDefault(c => c.Id == id);
             if (customer != null)
             {
                 _context.Customers.Remove(customer);
             }
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public Customer GetCustomer(int id)
@@ -54,5 +59,5 @@ namespace ecommerceWithAngular.Services.Repositories
         {
             _context.Customers.Update(customer);
         }
-    }
+    }*/
 }

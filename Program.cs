@@ -1,4 +1,6 @@
 using ecommerceWithAngular.Data;
+using ecommerceWithAngular.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,12 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ApplicationDbContext>
     (Options => Options.UseSqlServer(builder.Configuration.GetConnectionString
     ("DefaultConnection")));
+
+//builder.Services.AddDefaultIdentity<Customer>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddControllersWithViews();
+builder.Services.AddIdentity<Customer, ApplicationRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -36,5 +44,6 @@ app.UseEndpoints(endpoints =>
        pattern: "{area:exists}/{controller=products}/{action=Index}/{Id?}");
     endpoints.MapRazorPages();
 });
+
 
 app.Run();
